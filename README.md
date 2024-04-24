@@ -1,6 +1,6 @@
 # Cocktail_Site
  
-# Contributors
+## Contributors
 
-Dara Corrigan
-Alan Crane
+- Dara Corrigan
+- Alan Crane
