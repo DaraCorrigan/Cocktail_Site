@@ -1,0 +1,6 @@
+window.addEventListener("load", function () {
+   var searchButton = document.querySelector("#searchButton");
+    var searchInput = document.querySelector("#searchInput");
+    
+  });
+  
