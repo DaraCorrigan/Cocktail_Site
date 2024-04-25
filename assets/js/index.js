@@ -9,6 +9,12 @@ function performSearch(event) {
 
 searchForm.addEventListener("submit", performSearch);
 
+// CLEAR SEARCH BAR ON REFRESH
+            const searchInput = document.getElementById("search-input");
+            
+            window.addEventListener("load", function() {
+                searchInput.value = "";
+            });
 
 // API //
 window.addEventListener("load", function () {
