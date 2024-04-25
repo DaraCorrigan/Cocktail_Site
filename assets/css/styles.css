@@ -52,6 +52,23 @@ button {
     border-radius: 5px;
 }
 
+/* NAV BAR */
+#navbar {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+#navbar.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /* SEARCH  BAR */
 #search {
