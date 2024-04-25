@@ -3,4 +3,4 @@
 ## Contributors
 
 - Dara Corrigan
-- Alan Crane (github.com/4LanCrane)
+- Alan Crane (4LanCrane.github.io)
