@@ -1,3 +1,16 @@
+// SEARCH BAR ENTER BUTTON //
+const searchForm = document.getElementById("search-form");
+
+function performSearch(event) {
+    event.preventDefault();
+    const searchTerm = document.getElementById("search-input").value.trim();
+    console.log("Searching for:", searchTerm);
+}
+
+searchForm.addEventListener("submit", performSearch);
+
+
+// API //
 window.addEventListener("load", function () {
   var searchButton = document.querySelector("#search-button");
   searchButton.addEventListener("click", searchApi);
