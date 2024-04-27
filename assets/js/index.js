@@ -1,3 +1,5 @@
+console.log("Script loaded on favorites page");
+
 // SEARCH BAR ENTER BUTTON //
 const searchForm = document.getElementById("search-form");
 
@@ -21,6 +23,7 @@ const toggleBtn = document.getElementById("toggle-btn");
 const navbar = document.getElementById("navbar");
 
 toggleBtn.addEventListener("click", function() {
+    console.log("Button clicked");
     navbar.classList.toggle("active");
 });
 
