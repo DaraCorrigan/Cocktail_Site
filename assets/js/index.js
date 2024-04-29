@@ -28,12 +28,6 @@ toggleBtn.addEventListener("click", function() {
 window.addEventListener("load", function () {
   var searchButton = document.querySelector("#search-button");
   searchButton.addEventListener("click", searchApi);
-  searchButton.addEventListener('keypress',function(evt){
-    if (evt.key == "Enter"){
-        evt.preventDefault();
-        document.getElementById('search-button').click;
-    }
-  });
 });
 
 function searchApi() {
