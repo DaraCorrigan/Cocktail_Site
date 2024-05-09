@@ -16,14 +16,6 @@ searchForm.addEventListener("submit", performSearch);
                 searchInput.value = "";
             });
 
-// NAV BAR //
-const toggleBtn = document.getElementById("toggle-btn");
-const navbar = document.getElementById("navbar");
-
-toggleBtn.addEventListener("click", function() {
-    navbar.classList.toggle("active");
-});
-
 // API //
 window.addEventListener("load", function () {
   var searchButton = document.querySelector("#search-button");
