@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cocktails</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
@@ -13,37 +13,29 @@
 </head>
 
 <body>
-    <header>
+    <nav class="search">
         <h1>Cocktails!</h1>
-
-        <section id="search">
-            <form id="search-form">
-                <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Search for a cocktail...">
-                    <button id="search-button" type="submit">Search</button>
-                    <button id="random-button" type="submit" class="ri-dice-fill" aria-label="Random"></button>
-                </div>
-            </form>
-        </section>
-
-    </header>
+        <form id="search-form">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for a cocktail...">
+                <button id="search-button" type="submit">Search</button>
+                <button id="random-button" type="submit" class="ri-dice-fill" aria-label="Random"></button>
+            </div>
+        </form>
+    </nav>
 
     <main>
-
-        <section class="flex-container">
-            <div id="output"></div>
-        </section>
-
+        <h2 id="results-counter" class="hide"><b id="results-counter-number">0</b> Result found</h2>
+        <div id="output"></div>
     </main>
 
+    <footer>
+        <p>Created by <a href="https://github.com/4LanCrane" target="_blank" rel="noopener">Alan Crane</a> &amp; <a
+                href="https://github.com/DaraCorrigan" target="_blank" rel="noopener">Dara Corrigan</a> &amp; <a
+                href="https://github.com/acegoal07" target="_blank" rel="noopener">Alex Wood</a></p>
+    </footer>
+    
     <script src="assets/js/index.js" defer></script>
-
 </body>
-
-<footer>
-    <p>Created by <a href="https://github.com/4LanCrane" target="_blank" rel="noopener">Alan Crane</a> &amp; <a
-            href="https://github.com/DaraCorrigan" target="_blank" rel="noopener">Dara Corrigan</a> &amp; <a
-            href="https://github.com/acegoal07" target="_blank" rel="noopener">Alex Wood</a></p>
-</footer>
 
 </html>

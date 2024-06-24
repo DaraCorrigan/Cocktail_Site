@@ -1,0 +1,177 @@
+:root{
+   --primary-color: #f2ff00;
+   --primary-color-dark: #aeb800;
+   --secondary-color: #333;
+   --footer-height: 50px;
+}
+
+body, h1, h3, button {
+   margin: 0;
+   padding: 0;
+   color: var(--primary-color);
+}
+
+h2 {
+   color: var(--secondary-color);
+}
+
+a {
+   text-decoration:solid;
+   color: var(--primary-color);
+}
+
+
+body {
+   font-family: Bebas Neue, sans-serif;
+   background-color: #fff;
+   color: var(--secondary-color);
+}
+
+nav {
+   background-color:var(--secondary-color);
+   color: #fff;
+   text-align: center;
+   border-bottom: var(--primary-color) 5px solid;
+   padding: 1rem;
+}
+
+h1 {
+   font-size: 65px;
+}
+
+main {
+   padding-top: auto;
+}
+
+button {
+   padding: 10px 20px;
+   background-color: #007bff;
+   color: #fff;
+   border: none;
+   cursor: pointer;
+   border-radius: 5px;
+}
+
+.hide {
+   display: none;
+}
+
+/* SEARCH  BAR */
+.search-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   max-width: 400px;
+   margin: 0 auto;
+}
+
+#search-input {
+   flex: 1;
+   padding: 10px;
+   border: var(--primary-color) 3px solid;
+   border-radius: 5px 0 0 5px;
+   font-size: 16px;
+   outline: none;
+   font-family: Bebas Neue, sans-serif;
+}
+
+.search-container>button {
+   padding: 13px 20px;
+   background-color: var(--primary-color);
+   font-family: Bebas Neue, sans-serif;
+   color: var(--secondary-color);
+   border: none;
+   border-radius: 0 5px 5px 0;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.search-container>button:hover {
+   background-color: var(--primary-color-dark);
+}
+
+#random-button {
+   padding: 15px;
+   border-radius: 5px;
+   margin-left: 0.8rem;
+}
+
+/* OUTPUT SECTION */
+#output {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 1rem;
+   margin: 2rem;
+   margin-bottom: calc(var(--footer-height) + 30px);
+   margin-top: 1.5rem;
+   justify-items: center;
+}
+
+#output img {
+   max-width: 300px;
+   max-height: 300px;
+   border: 4px solid;
+   border-color: var(--primary-color);
+   border-radius: 10%;
+}
+
+.drinkDiv {
+   border: var(--primary-color) 5px solid;
+   border-radius: 10%;
+   padding: 20px;
+   background-color: var(--secondary-color);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   max-width: 400px;
+   width: 100%;
+}
+
+.drinkName {
+   color: var(--primary-color);
+   font-size: 70px;
+   margin-bottom: 10px;
+   margin-top: 10px;
+}
+
+.drinkIngredientsHeader {
+   margin-top: 0.5rem;
+}
+
+.drinkIngredients {
+   color: white;
+}
+
+.drinkInstructionsHeader {
+   margin-bottom: 0.5rem;
+}
+
+.drinkInstructions {
+   color: white;
+   max-width: 80%;
+   margin: auto;
+}
+
+#results-counter {
+   text-align: center;
+}
+
+/* FOOTER */
+footer {
+   text-align: center;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   height: var(--footer-height);
+   color: #fff;
+   border-top: var(--primary-color) 5px solid;
+   background-color: var(--secondary-color);
+}
+
+footer a:hover {
+   text-decoration: underline;
+}
