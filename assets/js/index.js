@@ -1,3 +1,13 @@
+/**
+ * Contains settings for the search that the user can change e.g. language, filters etc.
+ */
+class SearchSettings {
+   constructor() {
+      this.language = 'en';
+   }
+}
+const searchSettings = new SearchSettings();
+
 // ON LOAD
 window.addEventListener("load", function () {
    // Clear search bar on refresh
@@ -7,6 +17,24 @@ window.addEventListener("load", function () {
    document.querySelector("#search-form").addEventListener("submit", (evt) => evt.preventDefault());
    // Random search
    document.querySelector("#random-button").addEventListener("click", randomApi);
+   // Get language of the browser and set it as the search language if it is supported
+   switch (navigator.language.toUpperCase()) {
+      case ('EN'):
+         searchSettings.language = 'EN';
+         break;
+      case ('ES'):
+         searchSettings.language = 'ES';
+         break;
+      case ('FR'):
+         searchSettings.language = 'FR';
+         break;
+      case ('DE'):
+         searchSettings.language = 'DE';
+         break;
+      default:
+         searchSettings.language = 'EN';
+         break;
+   }
 });
 
 /**
@@ -27,6 +55,7 @@ function searchApi() {
          }
       })
       .then(function (data) {
+         console.log(data.drinks[0]);
          const drinks = data.drinks;
 
          if (!drinks) {
@@ -35,7 +64,7 @@ function searchApi() {
             document.querySelector('#results-counter-number').textContent = drinks.length;
             outputDataToDiv(drinks);
          }
-      }).catch(error, () => {
+      }).catch(function (error) {
          throw new Error(error);
       });
 }
@@ -62,7 +91,7 @@ function randomApi() {
       })
       .then(function (data) {
          outputDataToDiv(data.drinks);
-      }).catch(error, () => {
+      }).catch(function (error) {
          throw new Error(error);
       });
 }
@@ -85,7 +114,10 @@ function outputDataToDiv(data) {
       const drinkName = drink.strDrink;
       const drinkImage = drink.strDrinkThumb;
       // const drinkId = drink.idDrink;
-      const drinkInstructions = drink.strInstructions;
+      let drinkInstructions = searchSettings.language == "EN" ? drink.strInstructions : drink["strInstructions" + searchSettings.language];
+      if (!drinkInstructions) {
+         drinkInstructions = "No instructions found";
+      }
       const drinkIngredients = [];
 
       // get the ingredients and measurements and concatenate them
@@ -111,28 +143,38 @@ function outputDataToDiv(data) {
       drinkDiv.appendChild(drinkImageElement);
 
       const drinkIngredientsDiv = document.createElement("div");
+      drinkIngredientsDiv.classList.add("drinkSectionDiv");
       const drinkIngredientsHeader = document.createElement("h3");
       drinkIngredientsHeader.textContent = "Ingredients";
-      drinkIngredientsHeader.classList.add("drinkIngredientsHeader");
       drinkIngredientsDiv.appendChild(drinkIngredientsHeader);
 
       drinkIngredients.forEach(function (ingredient) {
          const drinkIngredientElement = document.createElement("p");
          drinkIngredientElement.textContent = ingredient;
-         drinkIngredientElement.classList.add("drinkIngredients");
          drinkIngredientsDiv.appendChild(drinkIngredientElement);
       });
 
       drinkDiv.appendChild(drinkIngredientsDiv);
 
+      const drinkGlassDiv = document.createElement("div");
+      drinkGlassDiv.classList.add("drinkSectionDiv");
+      const drinkGlassHeader = document.createElement("h3");
+      drinkGlassHeader.textContent = "Glass";
+      drinkGlassDiv.appendChild(drinkGlassHeader);
+
+      const drinkGlassElement = document.createElement("p");
+      drinkGlassElement.textContent = drink["strGlass"];
+      drinkGlassDiv.appendChild(drinkGlassElement);
+
+      drinkDiv.appendChild(drinkGlassDiv);
+
       const drinkInstructionsDiv = document.createElement("div");
+      drinkInstructionsDiv.classList.add("drinkSectionDiv");
       const drinkInstructionsHeader = document.createElement("h3");
       drinkInstructionsHeader.textContent = "Instructions";
-      drinkInstructionsHeader.classList.add("drinkInstructionsHeader");
       drinkInstructionsDiv.appendChild(drinkInstructionsHeader);
 
       const drinkInstructionsElement = document.createElement("p");
-      drinkInstructionsElement.classList.add("drinkInstructions");
       drinkInstructionsElement.textContent = drinkInstructions;
       drinkInstructionsDiv.appendChild(drinkInstructionsElement);
 

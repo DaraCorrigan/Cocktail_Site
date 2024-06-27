@@ -1,11 +1,14 @@
-:root{
+:root {
    --primary-color: #f2ff00;
    --primary-color-dark: #aeb800;
    --secondary-color: #333;
    --footer-height: 50px;
 }
 
-body, h1, h3, button {
+body,
+h1,
+h3,
+button {
    margin: 0;
    padding: 0;
    color: var(--primary-color);
@@ -16,7 +19,7 @@ h2 {
 }
 
 a {
-   text-decoration:solid;
+   text-decoration: solid;
    color: var(--primary-color);
 }
 
@@ -28,11 +31,12 @@ body {
 }
 
 nav {
-   background-color:var(--secondary-color);
+   background-color: var(--secondary-color);
    color: #fff;
    text-align: center;
    border-bottom: var(--primary-color) 5px solid;
    padding: 1rem;
+   position: sticky;
 }
 
 h1 {
@@ -104,10 +108,11 @@ button {
    flex-wrap: wrap;
    justify-content: center;
    gap: 1rem;
-   margin: 2rem;
+   margin: auto;
    margin-bottom: calc(var(--footer-height) + 30px);
    margin-top: 1.5rem;
    justify-items: center;
+   max-width: 2000px;
 }
 
 #output img {
@@ -131,6 +136,7 @@ button {
    text-align: center;
    max-width: 400px;
    width: 100%;
+   margin: 1rem;
 }
 
 .drinkName {
@@ -140,22 +146,16 @@ button {
    margin-top: 10px;
 }
 
-.drinkIngredientsHeader {
+/* .drinkSectionDiv {} */
+
+.drinkSectionDiv>h3 {
    margin-top: 0.5rem;
+   margin-bottom: 0.1rem;
 }
 
-.drinkIngredients {
+.drinkSectionDiv>p {
    color: white;
-}
-
-.drinkInstructionsHeader {
-   margin-bottom: 0.5rem;
-}
-
-.drinkInstructions {
-   color: white;
-   max-width: 80%;
-   margin: auto;
+   margin: 0.2rem;
 }
 
 #results-counter {
@@ -169,6 +169,7 @@ footer {
    bottom: 0;
    width: 100%;
    height: var(--footer-height);
+   padding: 0.5rem;
    color: #fff;
    border-top: var(--primary-color) 5px solid;
    background-color: var(--secondary-color);
