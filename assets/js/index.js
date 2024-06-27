@@ -3,7 +3,7 @@
  */
 class SearchSettings {
    constructor() {
-      this.language = 'en';
+      this.language = null;
    }
 }
 const searchSettings = new SearchSettings();
@@ -41,6 +41,7 @@ window.addEventListener("load", function () {
  * Search the API for a cocktail using the search input
  */
 function searchApi() {
+   showLoadingIcon();
    clearOutputDiv();
 
    document.querySelector('#results-counter').classList.remove('hide');
@@ -55,15 +56,14 @@ function searchApi() {
          }
       })
       .then(function (data) {
-         console.log(data.drinks[0]);
-         const drinks = data.drinks;
-
-         if (!drinks) {
+         if (!data.drinks) {
             document.querySelector('#results-counter-number').textContent = '0';
          } else {
+            const drinks = data.drinks;
             document.querySelector('#results-counter-number').textContent = drinks.length;
             outputDataToDiv(drinks);
          }
+         hideLoadingIcon();
       }).catch(function (error) {
          throw new Error(error);
       });
@@ -73,6 +73,7 @@ function searchApi() {
  * Get a random cocktail from the API
  */
 function randomApi() {
+   showLoadingIcon();
    clearOutputDiv();
 
    const counter = document.querySelector('#results-counter');
@@ -91,6 +92,7 @@ function randomApi() {
       })
       .then(function (data) {
          outputDataToDiv(data.drinks);
+         hideLoadingIcon();
       }).catch(function (error) {
          throw new Error(error);
       });
@@ -101,6 +103,22 @@ function randomApi() {
  */
 function clearOutputDiv() {
    document.querySelector("#output").querySelectorAll("*").forEach(n => n.remove());
+}
+
+/**
+ * Shows the loading icon and hides the output div
+ */
+function showLoadingIcon() {
+   document.querySelector('#loading-icon').classList.remove('hide');
+   document.querySelector('#output').classList.add('hide');
+}
+
+/**
+ * Hides the loading icon and shows the output div
+ */
+function hideLoadingIcon() {
+   document.querySelector('#loading-icon').classList.add('hide');
+   document.querySelector('#output').classList.remove('hide');
 }
 
 /**
@@ -145,21 +163,23 @@ function outputDataToDiv(data) {
       const drinkIngredientsDiv = document.createElement("div");
       drinkIngredientsDiv.classList.add("drinkSectionDiv");
       const drinkIngredientsHeader = document.createElement("h3");
-      drinkIngredientsHeader.textContent = "Ingredients";
+      drinkIngredientsHeader.textContent = "Ingredients:";
       drinkIngredientsDiv.appendChild(drinkIngredientsHeader);
 
+      const drinkIngredientsList = document.createElement("ul");
       drinkIngredients.forEach(function (ingredient) {
-         const drinkIngredientElement = document.createElement("p");
+         const drinkIngredientElement = document.createElement("li");
          drinkIngredientElement.textContent = ingredient;
-         drinkIngredientsDiv.appendChild(drinkIngredientElement);
+         drinkIngredientsList.appendChild(drinkIngredientElement);
       });
+      drinkIngredientsDiv.appendChild(drinkIngredientsList);
 
       drinkDiv.appendChild(drinkIngredientsDiv);
 
       const drinkGlassDiv = document.createElement("div");
       drinkGlassDiv.classList.add("drinkSectionDiv");
       const drinkGlassHeader = document.createElement("h3");
-      drinkGlassHeader.textContent = "Glass";
+      drinkGlassHeader.textContent = "Glass Type:";
       drinkGlassDiv.appendChild(drinkGlassHeader);
 
       const drinkGlassElement = document.createElement("p");
@@ -171,7 +191,7 @@ function outputDataToDiv(data) {
       const drinkInstructionsDiv = document.createElement("div");
       drinkInstructionsDiv.classList.add("drinkSectionDiv");
       const drinkInstructionsHeader = document.createElement("h3");
-      drinkInstructionsHeader.textContent = "Instructions";
+      drinkInstructionsHeader.textContent = "Instructions:";
       drinkInstructionsDiv.appendChild(drinkInstructionsHeader);
 
       const drinkInstructionsElement = document.createElement("p");
