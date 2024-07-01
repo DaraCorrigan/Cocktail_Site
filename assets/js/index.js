@@ -138,7 +138,7 @@ function outputDataToDiv(data) {
       }
       const drinkIngredients = [];
 
-      // get the ingredients and measurements and concatenate them
+      // Get the ingredients and measurements and concatenate them
       for (let j = 1; j <= 15; j++) {
          const ingredient = drink["strIngredient" + j];
          const measure = drink["strMeasure" + j];
