@@ -43,10 +43,7 @@ window.addEventListener("load", function () {
 function searchApi() {
    showLoadingIcon();
    clearOutputDiv();
-
-   document.querySelector('#results-counter').classList.remove('hide');
-
-   // api link is www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita
+   
    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${document.querySelector("#search-input").value.trim()}`)
       .then(function (response) {
          if (response.ok) {
@@ -56,13 +53,16 @@ function searchApi() {
          }
       })
       .then(function (data) {
+         const counter = document.querySelector('#results-counter');
          if (!data.drinks) {
-            document.querySelector('#results-counter-number').textContent = '0';
+            counter.textContent = '0';
+            counter.classList.remove('hide');
          } else {
             const drinks = data.drinks;
-            document.querySelector('#results-counter-number').textContent = drinks.length;
+            counter.textContent = drinks.length;
             outputDataToDiv(drinks);
          }
+         counter.classList.remove('hide');
          hideLoadingIcon();
       }).catch(function (error) {
          throw new Error(error);
