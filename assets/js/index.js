@@ -43,7 +43,7 @@ window.addEventListener("load", function () {
 function searchApi() {
    showLoadingIcon();
    clearOutputDiv();
-   
+
    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${document.querySelector("#search-input").value.trim()}`)
       .then(function (response) {
          if (response.ok) {
